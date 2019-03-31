@@ -1,0 +1,48 @@
+<head xmlns:th="http://www.w3.org/1999/xhtml" th:fragment="header">
+    <title>Knight list</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.2.1/css/bootstrap.min.css}" />
+
+    <script type="text/javascript" th:src="@{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
+
+</head>
+<div xmlns:th="http://www.w3.org/1999/xhtml" th:fragment="footer">
+    <h2>Stopka dziala</h2>
+    <p>&copy; Wszystkie prawa zastrzeżone</p>
+</div>
+
+<div xmlns:th="http://www.w3.org/1999/xhtml" th:fragment="addKnight">
+    <form th:method="post" th:action="@{/knight/v1/knights}" th:object="${knight}">
+        <div class="form-group row">
+            <label class="col-sm-4" for="name">Name for Knight</label>
+            <div class="col-sm-8">
+                <input class="form-control" id="name" type="text" name="name" placeholder="Please add name"/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-4" for="age">Age for Knight</label>
+            <div class="col-sm-8">
+            <input class="form-control" value="14" type="number" max="99" min="14" name="age" id="age" />
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary float-right">Dodaj rycerza</button>
+    </form>
+</div>
+<div xmlns:th="http://www.w3.org/1999/xhtml" th:fragment="details(knight)">
+    <h2 class="text-center" th:text="${knight.name}"></h2>
+    <p class="text-center">Opis rycerza</p>
+    <div class="d-flex flex-row align-items-stretch justify-content-around">
+        <p>Wiek rycerza: <span th:text="${knight.age}"></span></p>
+        <div >
+            <h2>Zadania rycerza</h2>
+            <ul class="list-group">
+                <li class="list-group-item" th:text="${knight.quest}">asd</li>
+                <li class="list-group-item">test</li>
+            </ul>
+        </div>
+        <p class="text-center" th:text="'Level rycerza '+${knight.level}"></p>
+        <p class="text-center" th:text="'Złoto '+${gold}"></p>
+    </div>
+</div>

@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/fragments :: header"></head>
+<body>
+<main>
+<div class="container mt-5">
+    <div class="row">
+        <div class="rol-12 col-md-6">
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Imie rycerza</th>
+                    <th>Wiek</th>
+                    <th>Szczegóły</th>
+                    <th>Usuń</th>
+                </tr>
+                </thead>
+                <tbody th:each=" knight: ${knights}">
+                <tr>
+                    <td></td>
+                    <td th:text="${knight.name}"></td>
+                    <td th:text="${knight.age}"></td>
+                    <td><a  th:href="@{'/knight/v1/knights/details/'+${knight.name}}" class="btn btn-primary">Szczegoly</a> </td>
+                    <td><a  th:href="@{'/knight/v1/knights/remove/'+${knight.name}}" class="btn btn-danger">Usun</a> </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-12 col-md-6">
+            <h2 class="text-center">Add a new Knight</h2>
+            <div th:replace="fragments/fragments :: addKnight"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div th:replace="fragments/fragments :: details(${knight})"></div>
+        </div>
+    </div>
+</div>
+</main>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div th:replace="fragments/fragments :: footer"></div>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
